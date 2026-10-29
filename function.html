@@ -1,0 +1,29 @@
+<html>
+<body>
+<h2>String and Math Objects</h2>
+String: <input type="text" id="str"><br><br>
+Number: <input type="number" id="num"><br><br>
+<button onclick="show()">Submit</button>
+<div id="result"></div>
+<script>
+function show()
+{
+let str = document.getElementById("str").value;
+let n = Number(document.getElementById("num").value);
+document.getElementById("result").innerHTML ="<h3>String Object</h3>" +
+"String: " + str + "<br>" +
+"Length: " + str.length + " - Finds string length<br>" +
+"Uppercase: " + str.toUpperCase() + " - Converts to uppercase<br>" +
+"Lowercase: " + str.toLowerCase() + " - Converts to lowercase<br>" +
+"Character: " + str.charAt(0) + " - Returns first character<br>" +
+"<h3>Math Object</h3>" +
+"Square Root: " + Math.sqrt(n) + " - Finds square root<br>" +
+"Power: " + Math.pow(n, 2) + " - Calculates square of number<br>" +
+"Maximum: " + Math.max(10,20,30) + " - Finds largest number<br>" +
+"Minimum: " + Math.min(10,20,30) + " - Finds smallest number<br>" +
+"Round: " + Math.round(n) + " - Rounds to nearest integer<br>" +
+"Random Number: " + Math.random() + " - Generates random decimal";
+}
+</script>
+</body>
+</html>
