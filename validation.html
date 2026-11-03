@@ -2,6 +2,14 @@
 <html>
 <head>
 <title>Student Registration</title>
+<style>
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+</style>
 </head>
 <body>
 <h1 align="center">STUDENT REGISTRATION FORM</h1>
@@ -9,7 +17,10 @@
 <table border="1" width="800" align="center">
 <tr>
 <td>FIRST NAME:</td>
-<td><input type="text" id="fname"></td>
+<td>
+<input type="text" id="fname">
+<span id="fnameError" class="error"></span>
+</td>
 </tr>
 <tr>
 <td>LAST NAME:</td>
@@ -17,7 +28,10 @@
 </tr>
 <tr>
 <td>EMAIL ID:</td>
-<td><input type="text" id="email"></td>
+<td>   
+<input type="text" id="email">
+<span id="emailError" class="error"></span>
+</td>
 </tr>
 <tr>
 <td>DOB:</td>
@@ -25,11 +39,15 @@
 </tr>
 <tr>
 <td>MOBILE NUMBER:</td>
-<td><input type="text" id="mobile"></td>
+<td>
+<input type="text" id="mobile">
+<span id="mobileError" class="error"></span>
+</td>
 </tr>
 <tr>
 <td>GENDER:</td>
-<td><input type="radio" name="gender" value="Male">Male
+<td>
+<input type="radio" name="gender" value="Male">Male
 <input type="radio" name="gender" value="Female">Female
 </td>
 </tr>
@@ -68,11 +86,12 @@
 <th>BOARD</th>
 <th>PERCENTAGE</th>
 <th>YEAR OF PASSING</th>
-</tr><tr>
+</tr>
+<tr>
 <td>1</td>
 <td>Class X</td>
 <td><input type="text"></td>
- <td><input type="number"></td>
+<td><input type="number"></td>
 <td><input type="number"></td>
 </tr>
 <tr>
@@ -116,35 +135,45 @@
 <input type="reset" value="RESET">
 </td>
 </tr>
-
 </table>
 </form>
-
 <script>
 function validateForm() {
+
     let name = document.getElementById("fname").value.trim();
     let email = document.getElementById("email").value.trim();
     let mobile = document.getElementById("mobile").value.trim();
 
+    // Clear previous error messages
+    document.getElementById("fnameError").innerHTML = "";
+    document.getElementById("emailError").innerHTML = "";
+    document.getElementById("mobileError").innerHTML = "";
+
+    // 1. Name validation
     if (name === "" || !/^[A-Za-z ]+$/.test(name)) {
-        alert("Please enter a valid name");
+        document.getElementById("fnameError").innerHTML =
+            "Enter a valid name";
         return false;
     }
 
+    // 2. Email validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert("Please enter a valid email ID");
+        document.getElementById("emailError").innerHTML =
+            "Enter a valid email";
         return false;
     }
 
+    // 3. Mobile validation
     if (!/^[6-9][0-9]{9}$/.test(mobile)) {
-        alert("Enter a valid 10-digit mobile number");
+        document.getElementById("mobileError").innerHTML =
+            "Enter a valid 10 digit mobile number";
         return false;
     }
 
+    // All validations passed
     alert("Form submitted successfully!");
     return true;
 }
 </script>
-
 </body>
 </html>
